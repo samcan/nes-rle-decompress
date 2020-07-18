@@ -11,6 +11,21 @@ pointer .dsb 2
 .ende
 ```
 
+If you don't already have constants declared with the PPU addresses, do so:
+
+```
+; PPU addresses
+PpuCtrl			= $2000
+PpuMask			= $2001
+PpuStatus		= $2002
+OamAddr			= $2003
+OamData			= $2004
+PpuScroll		= $2005
+PpuAddr			= $2006
+PpuData			= $2007
+OamDma			= $4014
+```
+
 Later in code, I define different locations including RLE-compressed nametables.
 For example:
 
