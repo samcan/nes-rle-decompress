@@ -4,9 +4,9 @@ syntax. Includes a Python script for RLE-compressing a 1024-byte nametable data 
 
 ## Limitations
 * Currently we only encode the count using positive integers. This means that files that don't
-have long runs of identical bytes won't compress as well, or may even end up quite larger than
+have long runs of identical bytes won't compress as well, or may even end up much larger than
 the original file. I have a version of the code in progress which uses negative numbers to specify
-that the next n bytes should be copied exactly rather than repeated. This should save some space,
+that the next *n* bytes should be copied exactly rather than repeated. This should save some space,
 but the code isn't yet working.
 * Assumes your code is using vertical mirroring. The macro `LoadRLEScreen` asks for a nametable
 to write to, with 0 = $2000 and 1 = $2400. The code could be tweaked easily enough to work with
