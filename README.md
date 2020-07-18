@@ -2,6 +2,29 @@
 RLE-decompression library for NES 6502 assembly, written using the [asm6f][asm6f] assembler
 syntax. Includes a Python script for RLE-compressing a 1024-byte nametable data file.
 
+## Limitations
+Currently we only encode the count using positive integers. This means that files that don't
+have long runs of identical bytes won't compress as well, or may even end up quite larger than
+the original file. I have a version of the code in progress which uses negative numbers to specify
+that the next n bytes should be copied exactly rather than repeated. This should save some space,
+but the code isn't yet working.
+
+## Compressing the nametable data file
+`compress_rle.py` is a Python script which will take a 1024-byte nametable data file and
+RLE-compress it. In my project, my uncompressed nametable data files have `.bin` extensions
+and the compressed nametable data files have `.rle` extensions:
+
+```
+> python compress_rle.py --input bg_title_screen.bin --output bg_title_screen.rle
+Input file: bg_title_screen.bin
+Output file: bg_title_screen.rle
+Input file size (bytes): 1024
+Output file size (bytes): 516
+Compression (%): 49.6
+
+>
+```
+
 ## Usage in 6502 assembly
 First, define a 16-bit variable named `pointer` in RAM:
 
